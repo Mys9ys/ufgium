@@ -903,11 +903,13 @@ final class Game
             if (preg_match('/slot\s+(\d+)/', (string)$row['meta'], $m)) {
                 $slot = (int)$m[1];
             }
+            $tok = (int)$row['token'];
             $rows[] = [
-                'token' => (int)$row['token'],
+                'token' => $tok,
                 'name' => $row['name'],
                 'gold' => (int)$row['amount'],
                 'slot' => $slot,
+                'side' => ($tok % 2 === 0) ? 'white' : 'red',
                 'is_bot' => (bool)$row['is_bot'],
             ];
         }

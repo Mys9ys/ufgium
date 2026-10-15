@@ -29,6 +29,7 @@ let state = null;
 let timer = null;
 let selectedCard = null;
 let pendingBetSlot = null;
+let settleDismissed = false;
 let scanStream = null;
 let scanLoop = 0;
 let pendingJoinCode = null;
@@ -731,28 +732,38 @@ function render() {
   }
 
   const settleOv = $('settle-overlay');
+  const settleReopen = $('settle-reopen');
+  if (round?.phase !== 'settle') settleDismissed = false;
   if (settleOv) {
-    const showSettle = round?.phase === 'settle' && settle;
+    const inSettle = round?.phase === 'settle' && settle;
+    const showSettle = inSettle && !settleDismissed;
     settleOv.classList.toggle('hide', !showSettle);
     settleOv.hidden = !showSettle;
     settleOv.setAttribute('aria-hidden', showSettle ? 'false' : 'true');
-    if (showSettle) {
+    if (settleReopen) {
+      const showReopen = inSettle && settleDismissed && !settle.me_acked;
+      settleReopen.classList.toggle('hide', !showReopen);
+      settleReopen.hidden = !showReopen;
+    }
+    if (inSettle) {
       $('settle-title').textContent = `Итог тура ${round.number}`;
       const list = settle.payouts || [];
       $('settle-list').innerHTML = list.length
-        ? list.map((p) => `
-          <div class="settle-row">
-            <span>№${p.token} ${esc(p.name)}${p.slot ? ` · карта #${p.slot}` : ''}</span>
-            <span class="gold">+${p.gold} 🪙</span>
-          </div>`).join('')
-        : '<div class="settle-row"><span>Никто не получил золото</span><span class="gold">0</span></div>';
+        ? list.map((p) => {
+          const side = p.side || ((Number(p.token) % 2 === 0) ? 'white' : 'red');
+          return `<div class="settle-row">
+            <span class="token ${side}">${p.token}</span>
+            <span class="settle-dots" aria-hidden="true"></span>
+            <span class="settle-plus">+</span>
+            ${coinPile(p.gold)}
+          </div>`;
+        }).join('')
+        : '<div class="settle-row"><span class="muted">Никто не получил золото</span></div>';
       const waiting = !settle.me_acked;
       $('settle-hint').textContent = waiting
-        ? `Ознакомься с итогом. Ждём игроков: ${settle.acks_humans || 0} / ${settle.humans || 0}.`
-        : `Ты отметил. Ждём остальных: ${settle.acks_humans || 0} / ${settle.humans || 0}.`;
+        ? `Ознакомься с итогом. Ждём игроков: ${settle.acks_humans || 0} / ${settle.humans || 0}`
+        : `Ознакомлен. Ждём игроков: ${settle.acks_humans || 0} / ${settle.humans || 0}`;
       $('settle-like').disabled = !waiting;
-      $('settle-dislike').disabled = !waiting;
-      $('settle-actions').classList.toggle('hide', false);
     }
   }
 
@@ -983,11 +994,18 @@ document.addEventListener('click', async (e) => {
     }
     if (e.target.id === 'settle-like' || e.target.closest?.('#settle-like')) {
       state = await api('round/settle-ack', authBody({ choice: 'like' }));
+      settleDismissed = false;
       render();
     }
-    if (e.target.id === 'settle-dislike' || e.target.closest?.('#settle-dislike')) {
-      state = await api('round/settle-ack', authBody({ choice: 'dislike' }));
+    if (e.target.id === 'settle-close' || e.target.closest?.('#settle-close')) {
+      settleDismissed = true;
       render();
+      return;
+    }
+    if (e.target.id === 'settle-reopen') {
+      settleDismissed = false;
+      render();
+      return;
     }
     if (e.target.id === 'bet-confirm-no' || e.target.id === 'bet-confirm-modal') {
       closeBetConfirm();

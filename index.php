@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UFGium — Департамент странных синих дел</title>
   <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32">
-  <link rel="stylesheet" href="/assets/app.css?v=table34">
+  <link rel="stylesheet" href="/assets/app.css?v=table35">
   <script>
     try { if (localStorage.getItem('ufgium-theme') === 'light') document.documentElement.classList.add('light'); } catch (e) {}
   </script>
@@ -199,15 +199,20 @@
                   </div>
                   <div id="settle-overlay" class="settle-overlay hide" hidden aria-hidden="true">
                     <div class="settle-card">
-                      <strong class="settle-title" id="settle-title">Итог тура</strong>
+                      <div class="settle-head">
+                        <strong class="settle-title" id="settle-title">Итог тура</strong>
+                        <button type="button" class="settle-close" id="settle-close" aria-label="Закрыть">
+                          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                        </button>
+                      </div>
                       <div class="settle-list" id="settle-list"></div>
-                      <p class="settle-hint muted" id="settle-hint"></p>
                       <div class="settle-actions" id="settle-actions">
-                        <button type="button" class="settle-ack like" id="settle-like" aria-label="Нравится">👍</button>
-                        <button type="button" class="settle-ack dislike" id="settle-dislike" aria-label="Не нравится">✕</button>
+                        <button type="button" class="settle-ack like" id="settle-like" aria-label="Ознакомлен">👍</button>
+                        <span class="settle-hint muted" id="settle-hint"></span>
                       </div>
                     </div>
                   </div>
+                  <button type="button" class="settle-reopen hide" id="settle-reopen" hidden>Итог тура</button>
                   </div>
                 </div>
               </div>
@@ -359,6 +364,6 @@
 
   <script src="/assets/vendor/qrcode.min.js"></script>
   <script src="/assets/vendor/jsQR.js"></script>
-  <script src="/assets/app.js?v=table34"></script>
+  <script src="/assets/app.js?v=table35"></script>
 </body>
 </html>
