@@ -43,7 +43,8 @@
 | `base_layer_no_vote` | base | ok | ✅ | 1 | Выложил — не ставит | Кто выложил карту в этом туре — не делает ставки. | laying players excluded from betting | `rule_layer_can_vote` | v1, v2 |
 | `base_payout_owner` | base | ok | ✅ | 1 | Куча владельцу | Все монеты на карте — владельцу этой карты. | transfer pile to slot owner | — | v1, фото |
 | `base_points_top` | base | ok | — | 1 | Балл за топ-кучу | Карта(ы) с максимумом ставок получает балл (ничья — всем лидерам). | points_top += 1 to max pile slot(s) | — | v3 B1 |
-| `base_points_volume` | base | ok | — | 1 | Балл за объём | Каждая поставленная монета = 1 балл (отдельный рейтинг). | points_volume += bet amount | — | v3 B1 |
+| `base_points_demand` | base | draft | — | 1 | Востребованность карты | Монеты на **твоей** карте = балл спроса (отдельно от топа и от золота в баланс). Пример: куча 3 → +3 владельцу. | points_demand += pile on own slots at settle | — | живая диктовка T2 |
+| `base_points_volume` | base | ok | — | 1 | Объём своих ставок | Каждая монета, которую **ты поставил**, = 1 балл (рейтинг ставщика). | points_volume += bet amount (bettor) | — | v3 B1; уточн. T2 |
 | `base_spending_rank` | base | ok | ✅ | 1 | Активность = траты | Главный рейтинг — сумма расходов (ставки, покупки, взносы). | spend_rank = sum(expense tx) | — | анонс, Excel |
 | `base_grossbuch` | base | ok | ✅ | 1 | Гроссбух | Незаписанная сделка не действует. В приложении — автожурнал. | all tx logged; no manual host confirm | — | v1, v3 A3 |
 | `base_deals_open` | base | ok | — | 1 | Сделки в туре | Пока тур активен — можно торговать картами и векселями. | deals phase = whole round until settle | — | v2 B1, v3 A2 |
