@@ -1,0 +1,1881 @@
+{
+    "version": "0.4",
+    "note": "Каждая пачка = свой набор сюжетов (не один сет в трёх фильтрах). Картинки: assets\/packs\/{packId}\/{id}.jpg. IP Imaginarium не копируем — только дух ассоциативных колод (разные тональности пачек, как Pandora\/Persephone\/Chimera у фанатов).",
+    "method": {
+        "batch_size": 16,
+        "order": [
+            "ink-yard",
+            "blue-dossier",
+            "balcony-tales"
+        ],
+        "rule": "Сначала утверждаем 16 сюжетов колоды → генерим → смотрим → следующая колода"
+    },
+    "audit_existing_01_16": {
+        "problem": "Одинаковые сюжеты 01–16 во всех трёх стилях → круглые бирки, сундуки, монеты читаются как один сет",
+        "keep": {
+            "ink-yard": [
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "09",
+                "10",
+                "11",
+                "13",
+                "16"
+            ],
+            "blue-dossier": [
+                "01",
+                "04",
+                "06",
+                "09",
+                "10",
+                "11",
+                "13",
+                "16"
+            ],
+            "balcony-tales": [
+                "04",
+                "05",
+                "09",
+                "10",
+                "11",
+                "13"
+            ]
+        },
+        "replace": {
+            "ink-yard": [
+                "01",
+                "07",
+                "08",
+                "12",
+                "14",
+                "15"
+            ],
+            "blue-dossier": [
+                "02",
+                "03",
+                "05",
+                "07",
+                "08",
+                "12",
+                "14",
+                "15"
+            ],
+            "balcony-tales": [
+                "01",
+                "02",
+                "03",
+                "06",
+                "07",
+                "08",
+                "12",
+                "14",
+                "15",
+                "16"
+            ]
+        },
+        "notes": {
+            "01": "Кейс с котом — оставить в Синем досье (иконка пачки). В Ярде и Балконе заменить.",
+            "07_08": "Круглые бирки слишком похожи между пачками — убрать из всех как дубли; смысл меток дать другими образами.",
+            "12_14_15": "Сундук \/ банк \/ монета-череп — слишком одна семья «золото в коробке»."
+        }
+    },
+    "packs": [
+        {
+            "id": "ink-yard",
+            "name": "Чернильный Ярд",
+            "style_key": "A",
+            "blurb": "Классический ассоциативный абсурд на бумаге: штриховка, сепия, сны. Тон как у «базовой» сюр-колоды.",
+            "prompt_style": "Surreal ink illustration on aged cream paper, cross-hatching, sepia and soft graphite, slightly absurd dream logic, soft vignette, hand-drawn storybook feel, mysterious and whimsical. Board game association card portrait 3:4. No text, no logo, no watermark, no brand names, no Imaginarium branding.",
+            "tone": [
+                "сюр",
+                "бумага",
+                "абсурд",
+                "одинокие объекты",
+                "сны"
+            ],
+            "cards": [
+                {
+                    "id": "01",
+                    "title": "Перо-якорь",
+                    "scene": "a giant fountain pen dropped like an anchor into a sea of ink, tiny boat of paper",
+                    "status": "done"
+                },
+                {
+                    "id": "02",
+                    "title": "Вексель",
+                    "scene": "a blank promissory note with a wax seal and a single gold coin on a desk",
+                    "status": "done"
+                },
+                {
+                    "id": "03",
+                    "title": "Гроссбух",
+                    "scene": "a thick ledger book that seems infinite, ink dripping into coins",
+                    "status": "done"
+                },
+                {
+                    "id": "04",
+                    "title": "Балкон тусы",
+                    "scene": "two strangers talking on a party balcony at night with a shared drink",
+                    "status": "done"
+                },
+                {
+                    "id": "05",
+                    "title": "Мизинец",
+                    "scene": "a tiny toe hitting a sharp bed leg, pain exploding as comic stars",
+                    "status": "done"
+                },
+                {
+                    "id": "06",
+                    "title": "Лампочка ЦБ",
+                    "scene": "a glowing lightbulb shaped like a percent sign hanging in an office",
+                    "status": "done"
+                },
+                {
+                    "id": "07",
+                    "title": "Шпагат судьбы",
+                    "scene": "tangled red and white twine knitting two opposite chairs together",
+                    "status": "done"
+                },
+                {
+                    "id": "08",
+                    "title": "Чёрнильная лужа",
+                    "scene": "a puddle of ink reflecting a whole banquet hall upside down",
+                    "status": "done"
+                },
+                {
+                    "id": "09",
+                    "title": "Гомункул",
+                    "scene": "a tiny five-legged marker doodle creature coming alive on paper",
+                    "status": "done"
+                },
+                {
+                    "id": "10",
+                    "title": "Метро",
+                    "scene": "subway doors closing, surreal passengers made of tickets and coins",
+                    "status": "done"
+                },
+                {
+                    "id": "11",
+                    "title": "Кит на шариках",
+                    "scene": "a giant whale floating in the night sky held by balloon strings",
+                    "status": "done"
+                },
+                {
+                    "id": "12",
+                    "title": "Карта в клетке",
+                    "scene": "a playing-card birdcage with a free bird made of torn paper outside",
+                    "status": "done"
+                },
+                {
+                    "id": "13",
+                    "title": "Котомка",
+                    "scene": "a kraft envelope sealed with a ribbon, nine cards peeking out",
+                    "status": "done"
+                },
+                {
+                    "id": "14",
+                    "title": "Ножницы цензора",
+                    "scene": "ornate scissors cutting a dream out of a newspaper sky",
+                    "status": "done"
+                },
+                {
+                    "id": "15",
+                    "title": "Зеркало стола",
+                    "scene": "a round table that is also a mirror showing yesterday's empty chairs",
+                    "status": "done"
+                },
+                {
+                    "id": "16",
+                    "title": "Департамент",
+                    "scene": "people gathered around a blue glowing lamp under an official shield",
+                    "status": "done"
+                },
+                {
+                    "id": "17",
+                    "title": "Ключевая лестница",
+                    "scene": "a rising interest-rate chart turning into a spiral staircase of paper",
+                    "status": "done"
+                },
+                {
+                    "id": "18",
+                    "title": "Очередь на перекур",
+                    "scene": "people in a smoking balcony queue where the 15-minute timer is a living sundial",
+                    "status": "done"
+                },
+                {
+                    "id": "19",
+                    "title": "Пустой слот",
+                    "scene": "an empty card slot collapsing like a sinkhole while a card stays in a hand",
+                    "status": "done"
+                },
+                {
+                    "id": "20",
+                    "title": "Хор кнопок",
+                    "scene": "many hands pressing one glowing Ready button that blooms like a flower",
+                    "status": "done"
+                },
+                {
+                    "id": "21",
+                    "title": "Печать хозяина",
+                    "scene": "a host figure holding an End stamp over a ranking sheet that curls into smoke",
+                    "status": "done"
+                },
+                {
+                    "id": "22",
+                    "title": "Жетон-переросток",
+                    "scene": "a token that grew roots and cracked the table like a tree",
+                    "status": "done"
+                },
+                {
+                    "id": "23",
+                    "title": "Сцена Ярда",
+                    "scene": "a tiny reality-show stage where gold coins are applause meters",
+                    "status": "done"
+                },
+                {
+                    "id": "24",
+                    "title": "Ситуация в облаке",
+                    "scene": "a floating thought-cloud of a situation above confused smiling faces",
+                    "status": "done"
+                },
+                {
+                    "id": "25",
+                    "title": "Почти подходит",
+                    "scene": "a picture frame that almost fits a doorway, tipping a small pile of coins",
+                    "status": "done"
+                },
+                {
+                    "id": "26",
+                    "title": "Четыре в тумане",
+                    "scene": "four coins dissolving into fog inside a silent vault door",
+                    "status": "done"
+                },
+                {
+                    "id": "27",
+                    "title": "Значок минуса",
+                    "scene": "a red minus badge hanging on a coat like a medal",
+                    "status": "done"
+                },
+                {
+                    "id": "28",
+                    "title": "Салфетка-ключ",
+                    "scene": "a napkin with a smeared square code opening a door of light",
+                    "status": "done"
+                },
+                {
+                    "id": "29",
+                    "title": "Молчаливые коллеги",
+                    "scene": "five mannequin colleagues perfectly laying cards in unison",
+                    "status": "done"
+                },
+                {
+                    "id": "30",
+                    "title": "Пятница без ботов",
+                    "scene": "serious faces around a rate lamp, empty bot chairs pushed aside",
+                    "status": "done"
+                },
+                {
+                    "id": "31",
+                    "title": "Песочница характеров",
+                    "scene": "one real person and five silhouette characters in a sandbox arena",
+                    "status": "done"
+                },
+                {
+                    "id": "32",
+                    "title": "Тяжёлая тройка",
+                    "scene": "three stacked weights crushing one soft picture under them",
+                    "status": "done"
+                },
+                {
+                    "id": "33",
+                    "title": "Разделённый пыл",
+                    "scene": "sparks splitting as two-plus-one across two glowing frames",
+                    "status": "done"
+                },
+                {
+                    "id": "34",
+                    "title": "За стеклом стенда",
+                    "scene": "a player behind glass on the board, mouth taped with a polite smile",
+                    "status": "done"
+                },
+                {
+                    "id": "35",
+                    "title": "Монета по честному",
+                    "scene": "one coin passing hand to hand under a vow of silence",
+                    "status": "done"
+                },
+                {
+                    "id": "36",
+                    "title": "Тень обмена",
+                    "scene": "two hands trading a picture for a coin inside a long shadow",
+                    "status": "done"
+                },
+                {
+                    "id": "37",
+                    "title": "Маски на стенде",
+                    "scene": "facedown board cards wearing tiny question-mark masks",
+                    "status": "done"
+                },
+                {
+                    "id": "38",
+                    "title": "Календарь со свечами",
+                    "scene": "a circled Friday the 13th calendar page, candles, calm waiter",
+                    "status": "done"
+                },
+                {
+                    "id": "39",
+                    "title": "Длинный стол",
+                    "scene": "a banquet table so long it curves into fog, golden lamps",
+                    "status": "done"
+                },
+                {
+                    "id": "40",
+                    "title": "Синий бокал",
+                    "scene": "a blue glass raising itself in a toast without a hand",
+                    "status": "done"
+                },
+                {
+                    "id": "41",
+                    "title": "Стеклянные фигуры",
+                    "scene": "clear glass figurines carefully stacking coins without drinking",
+                    "status": "done"
+                },
+                {
+                    "id": "42",
+                    "title": "Треугольник казны",
+                    "scene": "three figures forming a triangle, pouring tokens into a quiet chest",
+                    "status": "done"
+                },
+                {
+                    "id": "43",
+                    "title": "Карта на лбу",
+                    "scene": "a card stuck on a forehead during chaotic improvisation",
+                    "status": "done"
+                },
+                {
+                    "id": "44",
+                    "title": "Чуть не те лица",
+                    "scene": "portrait cards where every face is slightly wrong",
+                    "status": "done"
+                },
+                {
+                    "id": "45",
+                    "title": "Часы без стрелок",
+                    "scene": "a clock face with no hands that still casts ticking shadows",
+                    "status": "done"
+                },
+                {
+                    "id": "46",
+                    "title": "Сетка масок",
+                    "scene": "a wall grid of identical red masks staring",
+                    "status": "done"
+                },
+                {
+                    "id": "47",
+                    "title": "Спираль книг",
+                    "scene": "a spiral staircase of books with no exit without choosing a page",
+                    "status": "done"
+                },
+                {
+                    "id": "48",
+                    "title": "Громкий ноутбук",
+                    "scene": "a laptop face shouting louder than people at the table",
+                    "status": "done"
+                },
+                {
+                    "id": "49",
+                    "title": "Звонки по кругу",
+                    "scene": "phones ringing in a circle, nobody knows the agenda",
+                    "status": "done"
+                },
+                {
+                    "id": "50",
+                    "title": "Алтарь роутера",
+                    "scene": "a sticky note shrine under a glowing router",
+                    "status": "done"
+                },
+                {
+                    "id": "51",
+                    "title": "Песочные пять минут",
+                    "scene": "a colleague saying five minutes while a sandglass becomes an hourglass tower",
+                    "status": "done"
+                },
+                {
+                    "id": "52",
+                    "title": "Кот-реквизит",
+                    "scene": "a cat sitting in a prop case, refusing to leave, stage lights",
+                    "status": "done"
+                },
+                {
+                    "id": "53",
+                    "title": "Обещание после",
+                    "scene": "a voucher moon hanging over a payday calendar",
+                    "status": "done"
+                },
+                {
+                    "id": "54",
+                    "title": "Кивки в пустоту",
+                    "scene": "everyone nodding wisely while thought-bubbles are empty",
+                    "status": "done"
+                },
+                {
+                    "id": "55",
+                    "title": "Друзья не узнают",
+                    "scene": "friends pretending not to recognize their own card on the board",
+                    "status": "done"
+                },
+                {
+                    "id": "56",
+                    "title": "Гора здравого смысла",
+                    "scene": "a mountain of coins taller than a tiny common-sense figure",
+                    "status": "done"
+                },
+                {
+                    "id": "57",
+                    "title": "Два взгляда",
+                    "scene": "drinkers and sober glass people exchanging pity and envy",
+                    "status": "done"
+                },
+                {
+                    "id": "58",
+                    "title": "Третий последний тур",
+                    "scene": "a host saying last round while three clocks disagree",
+                    "status": "done"
+                },
+                {
+                    "id": "59",
+                    "title": "Четырнадцатый трон",
+                    "scene": "token fourteen on a tiny throne, thirteen never arrived",
+                    "status": "done"
+                },
+                {
+                    "id": "60",
+                    "title": "Только тебе видно",
+                    "scene": "one person seeing a perfect match others cannot see",
+                    "status": "done"
+                },
+                {
+                    "id": "61",
+                    "title": "Рукопожатие-призрак",
+                    "scene": "a handshake vanishing because the ledger page is blank",
+                    "status": "done"
+                },
+                {
+                    "id": "62",
+                    "title": "Сбор за секунды",
+                    "scene": "a team of three assembling as a timer hits zero",
+                    "status": "done"
+                },
+                {
+                    "id": "63",
+                    "title": "Знающее лицо банка",
+                    "scene": "a banker face that knows the price of one coin in rubles",
+                    "status": "done"
+                },
+                {
+                    "id": "64",
+                    "title": "Сверхурочный щит",
+                    "scene": "strange blue department opening overtime under night lamps",
+                    "status": "done"
+                },
+                {
+                    "id": "65",
+                    "title": "Дуэль картинки и текста",
+                    "scene": "a text card and a picture card fencing on a table",
+                    "status": "done"
+                },
+                {
+                    "id": "66",
+                    "title": "Одинаковое метро",
+                    "scene": "many identical metro cards slammed because a sticker said so",
+                    "status": "done"
+                },
+                {
+                    "id": "67",
+                    "title": "Вращение сторон",
+                    "scene": "white and red tokens spinning until parity decides",
+                    "status": "done"
+                },
+                {
+                    "id": "68",
+                    "title": "Пьедестал трат",
+                    "scene": "a podium where spend bars beat association winners",
+                    "status": "done"
+                },
+                {
+                    "id": "69",
+                    "title": "Читатели и махинаторы",
+                    "scene": "one group still reading while others already borrow",
+                    "status": "done"
+                },
+                {
+                    "id": "70",
+                    "title": "Лента минуса",
+                    "scene": "a graduation ribbon that ends as a minus in a profile",
+                    "status": "done"
+                },
+                {
+                    "id": "71",
+                    "title": "Фейерверк и заседание",
+                    "scene": "session-end fireworks colliding with a central bank meeting",
+                    "status": "done"
+                },
+                {
+                    "id": "72",
+                    "title": "Бантик-печать",
+                    "scene": "a ribbon seal on a starter pack glowing softly",
+                    "status": "done"
+                },
+                {
+                    "id": "73",
+                    "title": "Бланк между мирами",
+                    "scene": "a blank voucher floating between player and bank",
+                    "status": "done"
+                },
+                {
+                    "id": "74",
+                    "title": "Куча ползёт",
+                    "scene": "coins sliding from a pile into the card owner pocket",
+                    "status": "done"
+                },
+                {
+                    "id": "75",
+                    "title": "Корона стопки",
+                    "scene": "one board card crowned by the tallest coin tower",
+                    "status": "done"
+                },
+                {
+                    "id": "76",
+                    "title": "Монеты-точки",
+                    "scene": "each bet coin becoming a tiny glowing constellation point",
+                    "status": "done"
+                },
+                {
+                    "id": "77",
+                    "title": "Пять входят шесть выходят",
+                    "scene": "five coins entering a bank door and six emerging at finale",
+                    "status": "done"
+                },
+                {
+                    "id": "78",
+                    "title": "Одна карта одна монета",
+                    "scene": "one card for one coin between two players in ink light",
+                    "status": "done"
+                },
+                {
+                    "id": "79",
+                    "title": "Окно банка карт",
+                    "scene": "drawing one fresh picture from a bank deck window",
+                    "status": "done"
+                },
+                {
+                    "id": "80",
+                    "title": "Мягкий барьер трёх",
+                    "scene": "a soft barrier stopping bets beyond three coins",
+                    "status": "done"
+                },
+                {
+                    "id": "81",
+                    "title": "Дверь со второго тура",
+                    "scene": "a locked bank door opening only when round two dawns",
+                    "status": "done"
+                },
+                {
+                    "id": "82",
+                    "title": "Лимит расправляется",
+                    "scene": "a voucher limit stretching from three to five like rubber",
+                    "status": "done"
+                },
+                {
+                    "id": "83",
+                    "title": "Запрет на свою",
+                    "scene": "a hand blocked by a polite glove from betting on its own card",
+                    "status": "done"
+                },
+                {
+                    "id": "84",
+                    "title": "Слоты встают",
+                    "scene": "shuffled board slots settling into neat numbered places",
+                    "status": "done"
+                },
+                {
+                    "id": "85",
+                    "title": "Маски владельцев",
+                    "scene": "masks over owners until a settlement curtain rises",
+                    "status": "done"
+                },
+                {
+                    "id": "86",
+                    "title": "Выкуп на рассвете",
+                    "scene": "coins returning into used vouchers at dawn",
+                    "status": "done"
+                },
+                {
+                    "id": "87",
+                    "title": "Калитка тысячи",
+                    "scene": "a gate closing when debt reaches a red thousand",
+                    "status": "done"
+                },
+                {
+                    "id": "88",
+                    "title": "Кошелёк рядом",
+                    "scene": "a soft wallet glowing beside unfinished debt",
+                    "status": "done"
+                },
+                {
+                    "id": "89",
+                    "title": "Пузырь лички",
+                    "scene": "a private chat bubble making a market trade",
+                    "status": "done"
+                },
+                {
+                    "id": "90",
+                    "title": "Аукцион на салфетках",
+                    "scene": "bids written on crumpled napkins around a card",
+                    "status": "done"
+                },
+                {
+                    "id": "91",
+                    "title": "Синий щит",
+                    "scene": "department shield with strange blue aura",
+                    "status": "done"
+                },
+                {
+                    "id": "92",
+                    "title": "Прозрачный жетон",
+                    "scene": "a transparent token refracting table lamps",
+                    "status": "done"
+                },
+                {
+                    "id": "93",
+                    "title": "Официант секретов",
+                    "scene": "a waiter balancing coins on a tray of secrets",
+                    "status": "done"
+                },
+                {
+                    "id": "94",
+                    "title": "Последний корешок",
+                    "scene": "nine cards gone, only one lonely stub remains",
+                    "status": "done"
+                },
+                {
+                    "id": "95",
+                    "title": "Гроссбух закрывается",
+                    "scene": "the ledger closing itself after the last payout",
+                    "status": "done"
+                },
+                {
+                    "id": "96",
+                    "title": "Утро после катки",
+                    "scene": "sunrise over leftover tokens, vouchers and quiet chairs",
+                    "status": "done"
+                }
+            ]
+        },
+        {
+            "id": "blue-dossier",
+            "name": "Синее досье",
+            "style_key": "B",
+            "blurb": "Нуар DSSD: архив, штампы, долг, ночные коридоры. Тон ближе к «тёмной \/ бюрократической» пачке.",
+            "prompt_style": "Dark cinematic dossier aesthetic, deep navy and teal, soft cyan edge light, film grain, mysterious bureaucracy, moody modern noir. Board game association card portrait 3:4. No text, no logo, no watermark, no brand names.",
+            "tone": [
+                "нуар",
+                "архив",
+                "долг",
+                "ночь",
+                "штамп",
+                "наблюдение"
+            ],
+            "cards": [
+                {
+                    "id": "01",
+                    "title": "Кейс с котом",
+                    "scene": "an open briefcase with a heavy fluffy cat sleeping inside, coins nearby, night office mood",
+                    "status": "done"
+                },
+                {
+                    "id": "02",
+                    "title": "Штамп «секретно»",
+                    "scene": "a glowing cyan rubber stamp mid-air above a classified folder, ink splash like lightning",
+                    "status": "done"
+                },
+                {
+                    "id": "03",
+                    "title": "Коридор без окон",
+                    "scene": "an endless office corridor with one open door leaking blue light and fog",
+                    "status": "done"
+                },
+                {
+                    "id": "04",
+                    "title": "Балкон тусы",
+                    "scene": "two strangers talking on a party balcony at night with a shared drink, city lights below",
+                    "status": "done"
+                },
+                {
+                    "id": "05",
+                    "title": "Камера в люстре",
+                    "scene": "a crystal chandelier that is secretly a surveillance camera staring down",
+                    "status": "done"
+                },
+                {
+                    "id": "06",
+                    "title": "Лампочка ЦБ",
+                    "scene": "a glowing lightbulb shaped like a percent sign in a dark department office",
+                    "status": "done"
+                },
+                {
+                    "id": "07",
+                    "title": "Папка без имени",
+                    "scene": "a thick dossier folder with a blank label, handcuffs used as a paperclip",
+                    "status": "done"
+                },
+                {
+                    "id": "08",
+                    "title": "Отпечаток на стекле",
+                    "scene": "a fogged glass door with one handprint and a fading ID badge reflection",
+                    "status": "done"
+                },
+                {
+                    "id": "09",
+                    "title": "Гомункул",
+                    "scene": "a tiny five-legged marker doodle creature coming alive on paper under blue lamp",
+                    "status": "done"
+                },
+                {
+                    "id": "10",
+                    "title": "Метро",
+                    "scene": "subway doors closing, surreal passengers made of tickets and coins, night metro",
+                    "status": "done"
+                },
+                {
+                    "id": "11",
+                    "title": "Кит на шариках",
+                    "scene": "a giant whale floating in the night sky held by balloon strings, cyan moonlight",
+                    "status": "done"
+                },
+                {
+                    "id": "12",
+                    "title": "Лифт между этажами",
+                    "scene": "an elevator stuck between floors, passengers are shadows with glowing name tags",
+                    "status": "done"
+                },
+                {
+                    "id": "13",
+                    "title": "Котомка",
+                    "scene": "a kraft envelope sealed with a ribbon, nine cards peeking out, on a dark desk",
+                    "status": "done"
+                },
+                {
+                    "id": "14",
+                    "title": "Красная строка долга",
+                    "scene": "a profile screen where a red debt line grows like a vine around a chair",
+                    "status": "done"
+                },
+                {
+                    "id": "15",
+                    "title": "Ночной архивариус",
+                    "scene": "an archivist pushing a cart of glowing folders through a flooded basement",
+                    "status": "done"
+                },
+                {
+                    "id": "16",
+                    "title": "Департамент",
+                    "scene": "people gathered around a blue glowing lamp under an official shield",
+                    "status": "done"
+                },
+                {
+                    "id": "17",
+                    "title": "Ключ от сейфа",
+                    "scene": "a glowing keyhole in a safe shaped like a human ear",
+                    "status": "done"
+                },
+                {
+                    "id": "18",
+                    "title": "Ночной лифтёр",
+                    "scene": "an elevator operator who is only a silhouette holding a blue lantern",
+                    "status": "done"
+                },
+                {
+                    "id": "19",
+                    "title": "Пропуск просрочен",
+                    "scene": "an expired pass floating in a laser gate of cyan light",
+                    "status": "done"
+                },
+                {
+                    "id": "20",
+                    "title": "Тихий допрос",
+                    "scene": "two chairs and one lamp in an empty concrete room",
+                    "status": "done"
+                },
+                {
+                    "id": "21",
+                    "title": "Чернила улики",
+                    "scene": "fingerprints forming a constellation on a glass table",
+                    "status": "done"
+                },
+                {
+                    "id": "22",
+                    "title": "Рация в кармане",
+                    "scene": "a pocket radio whispering secrets as blue static",
+                    "status": "done"
+                },
+                {
+                    "id": "23",
+                    "title": "Крыша департамента",
+                    "scene": "rooftop antennas shaped like listening ears under rain",
+                    "status": "done"
+                },
+                {
+                    "id": "24",
+                    "title": "След ботинка",
+                    "scene": "a single wet boot print leading into fog",
+                    "status": "done"
+                },
+                {
+                    "id": "25",
+                    "title": "Зеркало досмотра",
+                    "scene": "airport-style mirror that reflects only badges not faces",
+                    "status": "done"
+                },
+                {
+                    "id": "26",
+                    "title": "Код на манжете",
+                    "scene": "a shirt cuff with a handwritten code glowing faintly",
+                    "status": "done"
+                },
+                {
+                    "id": "27",
+                    "title": "Сейф-аквариум",
+                    "scene": "a fish tank that is also a locked archive safe",
+                    "status": "done"
+                },
+                {
+                    "id": "28",
+                    "title": "Ночной курьер",
+                    "scene": "a courier bag leaking blue light on an empty street",
+                    "status": "done"
+                },
+                {
+                    "id": "29",
+                    "title": "Камера за портретом",
+                    "scene": "a painted portrait with a hidden camera eye blinking",
+                    "status": "done"
+                },
+                {
+                    "id": "30",
+                    "title": "Подпись невидимыми",
+                    "scene": "a contract signed in disappearing ink",
+                    "status": "done"
+                },
+                {
+                    "id": "31",
+                    "title": "Лифт вниз",
+                    "scene": "an elevator going down past floors that do not exist",
+                    "status": "done"
+                },
+                {
+                    "id": "32",
+                    "title": "Часы без стрелок в бюро",
+                    "scene": "bureau clock with no hands casting ticking blue shadows",
+                    "status": "done"
+                },
+                {
+                    "id": "33",
+                    "title": "Досье на двоих",
+                    "scene": "two folders clipped together with one shared secret photo",
+                    "status": "done"
+                },
+                {
+                    "id": "34",
+                    "title": "Глушилка",
+                    "scene": "a jammer device humming over a map of the city",
+                    "status": "done"
+                },
+                {
+                    "id": "35",
+                    "title": "Ключ-карта",
+                    "scene": "a keycard that opens doors into underwater corridors",
+                    "status": "done"
+                },
+                {
+                    "id": "36",
+                    "title": "Тишина в наушниках",
+                    "scene": "headphones full of silence while the room shouts",
+                    "status": "done"
+                },
+                {
+                    "id": "37",
+                    "title": "Печать «закрыто»",
+                    "scene": "a wax seal melting into a locked padlock",
+                    "status": "done"
+                },
+                {
+                    "id": "38",
+                    "title": "Ночной архив дождя",
+                    "scene": "rain falling inside a filing cabinet drawer",
+                    "status": "done"
+                },
+                {
+                    "id": "39",
+                    "title": "Тень на бланке",
+                    "scene": "a shadow sitting on a blank form filling itself",
+                    "status": "done"
+                },
+                {
+                    "id": "40",
+                    "title": "Синяя лампа дежурного",
+                    "scene": "a duty officer lamp that paints everyone cyan",
+                    "status": "done"
+                },
+                {
+                    "id": "41",
+                    "title": "Папка «не открывать»",
+                    "scene": "a folder marked do-not-open vibrating softly",
+                    "status": "done"
+                },
+                {
+                    "id": "42",
+                    "title": "Коридор камер",
+                    "scene": "a hallway of CCTV screens showing empty chairs",
+                    "status": "done"
+                },
+                {
+                    "id": "43",
+                    "title": "Перчатка на столе",
+                    "scene": "a single black glove left on a glass interrogation table",
+                    "status": "done"
+                },
+                {
+                    "id": "44",
+                    "title": "Микрофон в цветке",
+                    "scene": "a flower vase hiding a tiny microphone",
+                    "status": "done"
+                },
+                {
+                    "id": "45",
+                    "title": "Ночной регистратор",
+                    "scene": "a clerk stamping forms that turn into moths",
+                    "status": "done"
+                },
+                {
+                    "id": "46",
+                    "title": "Линия на карте",
+                    "scene": "a red string map glowing blue at the intersections",
+                    "status": "done"
+                },
+                {
+                    "id": "47",
+                    "title": "Сейф под полом",
+                    "scene": "a floor tile lifting to reveal a blue-lit vault",
+                    "status": "done"
+                },
+                {
+                    "id": "48",
+                    "title": "Голос в вентиляторе",
+                    "scene": "a vent whispering names into an empty office",
+                    "status": "done"
+                },
+                {
+                    "id": "49",
+                    "title": "Бейдж на полу",
+                    "scene": "an ID badge face-down on wet asphalt",
+                    "status": "done"
+                },
+                {
+                    "id": "50",
+                    "title": "Дверь без ручки",
+                    "scene": "a door with no handle, only a keyhole of light",
+                    "status": "done"
+                },
+                {
+                    "id": "51",
+                    "title": "Чашка с жучком",
+                    "scene": "a coffee cup with a tiny bug antenna",
+                    "status": "done"
+                },
+                {
+                    "id": "52",
+                    "title": "Ночной сканер",
+                    "scene": "a retina scanner reading a moth instead of an eye",
+                    "status": "done"
+                },
+                {
+                    "id": "53",
+                    "title": "Шкаф с паролями",
+                    "scene": "a locker full of hanging passwords like keys",
+                    "status": "done"
+                },
+                {
+                    "id": "54",
+                    "title": "Синий дым печати",
+                    "scene": "stamp ink smoke forming a face",
+                    "status": "done"
+                },
+                {
+                    "id": "55",
+                    "title": "Стол переговоров",
+                    "scene": "a negotiation table split by a glass wall of cyan",
+                    "status": "done"
+                },
+                {
+                    "id": "56",
+                    "title": "Архив под водой",
+                    "scene": "divers swimming between shelves of wet dossiers",
+                    "status": "done"
+                },
+                {
+                    "id": "57",
+                    "title": "Номер без имени",
+                    "scene": "a phone ringing with no caller name, only blue",
+                    "status": "done"
+                },
+                {
+                    "id": "58",
+                    "title": "Ключ от лифта",
+                    "scene": "an elevator key that opens sideways into another building",
+                    "status": "done"
+                },
+                {
+                    "id": "59",
+                    "title": "Тень оперативника",
+                    "scene": "an agent silhouette made of shredded documents",
+                    "status": "done"
+                },
+                {
+                    "id": "60",
+                    "title": "Камера в кнопке",
+                    "scene": "a coat button that is a camera lens",
+                    "status": "done"
+                },
+                {
+                    "id": "61",
+                    "title": "Пропуск на двоих",
+                    "scene": "one pass photo with two overlapping faces",
+                    "status": "done"
+                },
+                {
+                    "id": "62",
+                    "title": "Сейф-сердце",
+                    "scene": "a heart-shaped safe ticking like a bomb of secrets",
+                    "status": "done"
+                },
+                {
+                    "id": "63",
+                    "title": "Ночной стенографист",
+                    "scene": "a stenographer typing rain into ink",
+                    "status": "done"
+                },
+                {
+                    "id": "64",
+                    "title": "Линия прослушки",
+                    "scene": "telephone wires braided into a listening ear",
+                    "status": "done"
+                },
+                {
+                    "id": "65",
+                    "title": "Папка с мотыльком",
+                    "scene": "a moth escaping from a classified folder",
+                    "status": "done"
+                },
+                {
+                    "id": "66",
+                    "title": "Синий коридор суда",
+                    "scene": "a courthouse corridor lit only by cyan exit signs",
+                    "status": "done"
+                },
+                {
+                    "id": "67",
+                    "title": "Отпечаток на чашке",
+                    "scene": "lipstick print that is actually a fingerprint map",
+                    "status": "done"
+                },
+                {
+                    "id": "68",
+                    "title": "Досье в зеркале",
+                    "scene": "a mirror reflecting a dossier that is not in the room",
+                    "status": "done"
+                },
+                {
+                    "id": "69",
+                    "title": "Ночной курьер на крыше",
+                    "scene": "courier silhouette running across rooftops with glowing bag",
+                    "status": "done"
+                },
+                {
+                    "id": "70",
+                    "title": "Ключ в льду",
+                    "scene": "a key frozen in a block of ice on a desk",
+                    "status": "done"
+                },
+                {
+                    "id": "71",
+                    "title": "Камера за часами",
+                    "scene": "clock face with a surveillance lens as the center",
+                    "status": "done"
+                },
+                {
+                    "id": "72",
+                    "title": "Штамп рассвета",
+                    "scene": "a stamp pressing dawn light onto a night form",
+                    "status": "done"
+                },
+                {
+                    "id": "73",
+                    "title": "Тихий сервер",
+                    "scene": "server racks humming like a choir in blue",
+                    "status": "done"
+                },
+                {
+                    "id": "74",
+                    "title": "Папка под подушкой",
+                    "scene": "a dossier under a hotel pillow glowing faintly",
+                    "status": "done"
+                },
+                {
+                    "id": "75",
+                    "title": "Лифт с одним пассажиром",
+                    "scene": "elevator with one passenger and infinite reflections",
+                    "status": "done"
+                },
+                {
+                    "id": "76",
+                    "title": "Синяя печать на стекле",
+                    "scene": "cyan stamp mark on a window overlooking the city",
+                    "status": "done"
+                },
+                {
+                    "id": "77",
+                    "title": "Архивариус без лица",
+                    "scene": "faceless archivist sorting glowing folders",
+                    "status": "done"
+                },
+                {
+                    "id": "78",
+                    "title": "Рация и дождь",
+                    "scene": "walkie-talkie left in rain still blinking",
+                    "status": "done"
+                },
+                {
+                    "id": "79",
+                    "title": "Дверь в подвал",
+                    "scene": "basement door with blue light leaking under it",
+                    "status": "done"
+                },
+                {
+                    "id": "80",
+                    "title": "Карта города из ниток",
+                    "scene": "city map made of glowing cyan threads",
+                    "status": "done"
+                },
+                {
+                    "id": "81",
+                    "title": "Ночной досмотр",
+                    "scene": "security wand waving over a suitcase of fog",
+                    "status": "done"
+                },
+                {
+                    "id": "82",
+                    "title": "Пропуск в кармане пальто",
+                    "scene": "overcoat pocket spilling pass cards like leaves",
+                    "status": "done"
+                },
+                {
+                    "id": "83",
+                    "title": "Сейф с эхом",
+                    "scene": "open safe echoing a conversation from yesterday",
+                    "status": "done"
+                },
+                {
+                    "id": "84",
+                    "title": "Камера в люстре бюро",
+                    "scene": "chandelier camera watching empty desks",
+                    "status": "done"
+                },
+                {
+                    "id": "85",
+                    "title": "Чернильный протокол",
+                    "scene": "protocol pages turning into blue birds",
+                    "status": "done"
+                },
+                {
+                    "id": "86",
+                    "title": "Линия на асфальте",
+                    "scene": "police chalk line glowing cyan at night",
+                    "status": "done"
+                },
+                {
+                    "id": "87",
+                    "title": "Папка «архив»",
+                    "scene": "archive box with eyes peeking from the lid",
+                    "status": "done"
+                },
+                {
+                    "id": "88",
+                    "title": "Ночной переводчик",
+                    "scene": "translator booth floating in a dark plaza",
+                    "status": "done"
+                },
+                {
+                    "id": "89",
+                    "title": "Ключ-флешка",
+                    "scene": "USB key glowing like a relic on a chain",
+                    "status": "done"
+                },
+                {
+                    "id": "90",
+                    "title": "Синий ливень улик",
+                    "scene": "rain of paper evidence falling in cyan light",
+                    "status": "done"
+                },
+                {
+                    "id": "91",
+                    "title": "Дверь следствия",
+                    "scene": "investigation door half open to fog",
+                    "status": "done"
+                },
+                {
+                    "id": "92",
+                    "title": "Тень на бланке заявки",
+                    "scene": "application form with a living shadow signature",
+                    "status": "done"
+                },
+                {
+                    "id": "93",
+                    "title": "Рация дежурного",
+                    "scene": "night desk with a radio and one blue mug",
+                    "status": "done"
+                },
+                {
+                    "id": "94",
+                    "title": "Архив последней смены",
+                    "scene": "last-shift archive lights turning off one by one",
+                    "status": "done"
+                },
+                {
+                    "id": "95",
+                    "title": "Печать закрытия дела",
+                    "scene": "final stamp closing a case as moths fly out",
+                    "status": "done"
+                },
+                {
+                    "id": "96",
+                    "title": "Утро в департаменте",
+                    "scene": "dawn light through blinds over empty dossier carts",
+                    "status": "done"
+                }
+            ]
+        },
+        {
+            "id": "balcony-tales",
+            "name": "Балконные сказки",
+            "style_key": "E",
+            "blurb": "Тёплая мемология: туса, тосты, неловкость, уютный сюр. Тон как у «лёгкой \/ дружеской» пачки.",
+            "prompt_style": "Soft digital storybook painting, gentle watercolor washes, pastel dusk palette, cozy surrealism, warm string lights, friendly atmospheric slightly magical. Board game association card portrait 3:4. No text, no logo, no watermark, no brand names.",
+            "tone": [
+                "уют",
+                "туса",
+                "дружба",
+                "неловкость",
+                "сказка",
+                "вечер"
+            ],
+            "cards": [
+                {
+                    "id": "01",
+                    "title": "Тост в чужой бокал",
+                    "scene": "someone toasting into a stranger's glass by mistake, warm balcony lights",
+                    "status": "done"
+                },
+                {
+                    "id": "02",
+                    "title": "Плед на двоих",
+                    "scene": "one shared blanket on a chilly balcony covering two awkward friends and a third empty space",
+                    "status": "done"
+                },
+                {
+                    "id": "03",
+                    "title": "Очередь за шаурмой",
+                    "scene": "a magical midnight line for street food where everyone still wears party stickers",
+                    "status": "done"
+                },
+                {
+                    "id": "04",
+                    "title": "Балкон тусы",
+                    "scene": "two strangers talking on a party balcony at night with a shared drink",
+                    "status": "done"
+                },
+                {
+                    "id": "05",
+                    "title": "Мизинец",
+                    "scene": "a tiny toe hitting a sharp bed leg, pain as soft comic stars",
+                    "status": "done"
+                },
+                {
+                    "id": "06",
+                    "title": "Плейлист хозяина",
+                    "scene": "a glowing speaker sprouting flowers while guests argue about the song",
+                    "status": "done"
+                },
+                {
+                    "id": "07",
+                    "title": "Фото без лица",
+                    "scene": "a group selfie where everyone's face is a warm light blob except one shy smile",
+                    "status": "done"
+                },
+                {
+                    "id": "08",
+                    "title": "Такси на рассвете",
+                    "scene": "friends pouring leftover snacks into a taxi at dawn, city soft pink",
+                    "status": "done"
+                },
+                {
+                    "id": "09",
+                    "title": "Гомункул",
+                    "scene": "a tiny five-legged marker doodle creature coming alive on paper",
+                    "status": "done"
+                },
+                {
+                    "id": "10",
+                    "title": "Метро",
+                    "scene": "subway doors closing, surreal passengers made of tickets and coins, soft evening light",
+                    "status": "done"
+                },
+                {
+                    "id": "11",
+                    "title": "Кит на шариках",
+                    "scene": "a giant whale floating in the night sky held by balloon strings",
+                    "status": "done"
+                },
+                {
+                    "id": "12",
+                    "title": "Диван-остров",
+                    "scene": "a living-room sofa floating like an island in a sea of coats and shoes",
+                    "status": "done"
+                },
+                {
+                    "id": "13",
+                    "title": "Котомка",
+                    "scene": "a kraft envelope sealed with a ribbon, nine cards peeking out",
+                    "status": "done"
+                },
+                {
+                    "id": "14",
+                    "title": "Последний чипс",
+                    "scene": "two hands reaching for the last chip in a bowl that glows like treasure",
+                    "status": "done"
+                },
+                {
+                    "id": "15",
+                    "title": "Куртка не та",
+                    "scene": "guests leaving with mixed-up coats that have grown tiny wings",
+                    "status": "done"
+                },
+                {
+                    "id": "16",
+                    "title": "Утро на чужой кухне",
+                    "scene": "sunrise over a messy kitchen, someone frying eggs in party clothes",
+                    "status": "done"
+                },
+                {
+                    "id": "17",
+                    "title": "Чайник с секретом",
+                    "scene": "a whistling kettle pouring stars into mismatched mugs at a house party",
+                    "status": "done"
+                },
+                {
+                    "id": "18",
+                    "title": "Тапки хозяина",
+                    "scene": "guests trying on the host oversized slippers that glow like lanterns",
+                    "status": "done"
+                },
+                {
+                    "id": "19",
+                    "title": "Лифт с пиццей",
+                    "scene": "a pizza box floating up an apartment elevator shaft like a hot air balloon",
+                    "status": "done"
+                },
+                {
+                    "id": "20",
+                    "title": "Селфи с кактусом",
+                    "scene": "friends posing with a balcony cactus wearing tiny party glasses",
+                    "status": "done"
+                },
+                {
+                    "id": "21",
+                    "title": "Холодильник-портал",
+                    "scene": "an open fridge door revealing a tiny warm festival inside leftover containers",
+                    "status": "done"
+                },
+                {
+                    "id": "22",
+                    "title": "Плейлист на стенах",
+                    "scene": "song lyrics blooming as soft neon vines across the living room",
+                    "status": "done"
+                },
+                {
+                    "id": "23",
+                    "title": "Одеяло-крепость",
+                    "scene": "blankets building a fort that levitates above snack bowls",
+                    "status": "done"
+                },
+                {
+                    "id": "24",
+                    "title": "Чужой зарядник",
+                    "scene": "a tangle of phone chargers becoming a glowing friendship braid",
+                    "status": "done"
+                },
+                {
+                    "id": "25",
+                    "title": "Тост без повода",
+                    "scene": "everyone raising empty glasses because someone said wait",
+                    "status": "done"
+                },
+                {
+                    "id": "26",
+                    "title": "Кошка на колонке",
+                    "scene": "a cat sitting on a Bluetooth speaker radiating cozy bass ripples",
+                    "status": "done"
+                },
+                {
+                    "id": "27",
+                    "title": "Балконный дождь",
+                    "scene": "friends under one tiny umbrella on a wet balcony laughing",
+                    "status": "done"
+                },
+                {
+                    "id": "28",
+                    "title": "Карта городов",
+                    "scene": "a wall map where pushpins bloom into tiny party balloons",
+                    "status": "done"
+                },
+                {
+                    "id": "29",
+                    "title": "Носок-пропажа",
+                    "scene": "one missing sock dancing alone on a radiator at dawn",
+                    "status": "done"
+                },
+                {
+                    "id": "30",
+                    "title": "Очередь в ванную",
+                    "scene": "a polite hallway line where people hold toothbrushes like microphones",
+                    "status": "done"
+                },
+                {
+                    "id": "31",
+                    "title": "Свечи из бутылок",
+                    "scene": "wine bottles turned into candleholders casting soft fairy light",
+                    "status": "done"
+                },
+                {
+                    "id": "32",
+                    "title": "Читкод дивана",
+                    "scene": "someone discovering a secret recline button that opens a starry hatch",
+                    "status": "done"
+                },
+                {
+                    "id": "33",
+                    "title": "Привет соседям",
+                    "scene": "waving to neighboring balconies that wave back with string lights",
+                    "status": "done"
+                },
+                {
+                    "id": "34",
+                    "title": "Торт без ножа",
+                    "scene": "guests cutting a birthday cake with a house key gently",
+                    "status": "done"
+                },
+                {
+                    "id": "35",
+                    "title": "Плейлист спора",
+                    "scene": "two friends arguing while a glowing speaker sprouts apologetic flowers",
+                    "status": "done"
+                },
+                {
+                    "id": "36",
+                    "title": "Такси-караван",
+                    "scene": "three taxis lined up at dawn filled with balloons and leftovers",
+                    "status": "done"
+                },
+                {
+                    "id": "37",
+                    "title": "Кухня-океан",
+                    "scene": "dirty dishes floating like islands in soapy pastel water",
+                    "status": "done"
+                },
+                {
+                    "id": "38",
+                    "title": "Плед-телепорт",
+                    "scene": "wrapping in a blanket and appearing on another balcony mid-laugh",
+                    "status": "done"
+                },
+                {
+                    "id": "39",
+                    "title": "Чайный гриб",
+                    "scene": "a kombucha jar glowing like a tiny aquarium on the windowsill",
+                    "status": "done"
+                },
+                {
+                    "id": "40",
+                    "title": "Гирлянда-путаница",
+                    "scene": "tangled fairy lights shaping into a soft heart above coats",
+                    "status": "done"
+                },
+                {
+                    "id": "41",
+                    "title": "Подушка-свидетель",
+                    "scene": "a couch pillow with embroidered eyes watching the party secrets",
+                    "status": "done"
+                },
+                {
+                    "id": "42",
+                    "title": "Микроволновка-солнце",
+                    "scene": "leftover pizza reheating under a microwave that glows like sunrise",
+                    "status": "done"
+                },
+                {
+                    "id": "43",
+                    "title": "Шарф на пятерых",
+                    "scene": "one endless scarf linking five friends on a windy balcony",
+                    "status": "done"
+                },
+                {
+                    "id": "44",
+                    "title": "Банка с желаниями",
+                    "scene": "a jam jar filled with handwritten wishes glowing soft gold",
+                    "status": "done"
+                },
+                {
+                    "id": "45",
+                    "title": "Скользкий пол",
+                    "scene": "socks skating across a polished floor leaving comet trails",
+                    "status": "done"
+                },
+                {
+                    "id": "46",
+                    "title": "Фото с тортом в лицо",
+                    "scene": "birthday cake smash turning into floating pastel crumbs",
+                    "status": "done"
+                },
+                {
+                    "id": "47",
+                    "title": "Растение-гость",
+                    "scene": "a potted plant wearing a party hat joining the circle",
+                    "status": "done"
+                },
+                {
+                    "id": "48",
+                    "title": "Окно напротив",
+                    "scene": "two apartments toasting each other through facing windows",
+                    "status": "done"
+                },
+                {
+                    "id": "49",
+                    "title": "Корзина белья",
+                    "scene": "clean laundry basket becoming a soft nest for napping guests",
+                    "status": "done"
+                },
+                {
+                    "id": "50",
+                    "title": "Ключи в салате",
+                    "scene": "house keys discovered in a salad bowl like treasure",
+                    "status": "done"
+                },
+                {
+                    "id": "51",
+                    "title": "Плед и проектор",
+                    "scene": "movie projected onto a blanket fort wall of floating stars",
+                    "status": "done"
+                },
+                {
+                    "id": "52",
+                    "title": "Часы на полу",
+                    "scene": "someone placing wall clocks on the floor to stop time politely",
+                    "status": "done"
+                },
+                {
+                    "id": "53",
+                    "title": "Ваза с вилками",
+                    "scene": "a flower vase blooming metal forks like silver stems",
+                    "status": "done"
+                },
+                {
+                    "id": "54",
+                    "title": "Балконный оркестр",
+                    "scene": "bottles and pans becoming instruments under string lights",
+                    "status": "done"
+                },
+                {
+                    "id": "55",
+                    "title": "Чужие тапки-пара",
+                    "scene": "mismatched slippers dancing together toward the door",
+                    "status": "done"
+                },
+                {
+                    "id": "56",
+                    "title": "Стикеры на лбах",
+                    "scene": "party stickers migrating from faces onto floating balloons",
+                    "status": "done"
+                },
+                {
+                    "id": "57",
+                    "title": "Чай в термосе",
+                    "scene": "a thermos pouring endless warm light into paper cups",
+                    "status": "done"
+                },
+                {
+                    "id": "58",
+                    "title": "Лестничная туса",
+                    "scene": "neighbors sitting on stair steps forming a glowing spiral",
+                    "status": "done"
+                },
+                {
+                    "id": "59",
+                    "title": "Коробка пиццы-плот",
+                    "scene": "friends rafting across a carpet sea on pizza boxes",
+                    "status": "done"
+                },
+                {
+                    "id": "60",
+                    "title": "Зеркало прихожей",
+                    "scene": "hallway mirror reflecting a kinder braver version of guests",
+                    "status": "done"
+                },
+                {
+                    "id": "61",
+                    "title": "Шторы-паруса",
+                    "scene": "curtains billowing into sails while the room becomes a soft ship",
+                    "status": "done"
+                },
+                {
+                    "id": "62",
+                    "title": "Ночной тост-шепот",
+                    "scene": "whispered toasts that turn into fireflies above the table",
+                    "status": "done"
+                },
+                {
+                    "id": "63",
+                    "title": "Пакет с сюрпризом",
+                    "scene": "a grocery bag opening into a tiny warm market alley",
+                    "status": "done"
+                },
+                {
+                    "id": "64",
+                    "title": "Пульт под диваном",
+                    "scene": "reaching under the sofa and finding a remote that changes the moon phase",
+                    "status": "done"
+                },
+                {
+                    "id": "65",
+                    "title": "Свитер-осьминог",
+                    "scene": "one oversized sweater hugging three friends at once",
+                    "status": "done"
+                },
+                {
+                    "id": "66",
+                    "title": "Блинный рассвет",
+                    "scene": "pancakes stacked into a soft sunrise on a messy kitchen",
+                    "status": "done"
+                },
+                {
+                    "id": "67",
+                    "title": "Открытка на холодильнике",
+                    "scene": "fridge magnets arranging themselves into a love note",
+                    "status": "done"
+                },
+                {
+                    "id": "68",
+                    "title": "Балконный кот-судья",
+                    "scene": "a cat judging karaoke from a railing throne",
+                    "status": "done"
+                },
+                {
+                    "id": "69",
+                    "title": "Чашка с трещиной",
+                    "scene": "a cracked mug mended with gold light holding shared tea",
+                    "status": "done"
+                },
+                {
+                    "id": "70",
+                    "title": "Наушники на двоих",
+                    "scene": "one headphone split between two friends sharing a song",
+                    "status": "done"
+                },
+                {
+                    "id": "71",
+                    "title": "Снег на балконе",
+                    "scene": "first snow frosting drinks into tiny crystal crowns",
+                    "status": "done"
+                },
+                {
+                    "id": "72",
+                    "title": "Коробка переезда",
+                    "scene": "moving boxes sprouting wings and refusing to leave the party",
+                    "status": "done"
+                },
+                {
+                    "id": "73",
+                    "title": "Фонарик под одеялом",
+                    "scene": "flashlight stories under a duvet lighting tiny paper cities",
+                    "status": "done"
+                },
+                {
+                    "id": "74",
+                    "title": "Стул у стены",
+                    "scene": "the quiet wallflower chair blooming soft flowers when sat on",
+                    "status": "done"
+                },
+                {
+                    "id": "75",
+                    "title": "Печенье с предсказанием",
+                    "scene": "fortune cookies releasing tiny glowing paper birds",
+                    "status": "done"
+                },
+                {
+                    "id": "76",
+                    "title": "Ливень и плед",
+                    "scene": "rain outside while a balcony door frames a warm blanket cocoon",
+                    "status": "done"
+                },
+                {
+                    "id": "77",
+                    "title": "Гитара без струн",
+                    "scene": "an unstrung guitar still making soft pastel soundwaves",
+                    "status": "done"
+                },
+                {
+                    "id": "78",
+                    "title": "Тарелка-луна",
+                    "scene": "a round plate of leftovers becoming a crescent moon snack",
+                    "status": "done"
+                },
+                {
+                    "id": "79",
+                    "title": "Соседка с тортом",
+                    "scene": "a neighbor appearing with cake because the music was too joyful",
+                    "status": "done"
+                },
+                {
+                    "id": "80",
+                    "title": "Плед-карта города",
+                    "scene": "a knitted blanket patterned like metro lines connecting friends",
+                    "status": "done"
+                },
+                {
+                    "id": "81",
+                    "title": "Окно на рассвете",
+                    "scene": "sunrise painting sleepy faces gold through sheer curtains",
+                    "status": "done"
+                },
+                {
+                    "id": "82",
+                    "title": "Банка оливок",
+                    "scene": "olive jar becoming a tiny green aquarium of party secrets",
+                    "status": "done"
+                },
+                {
+                    "id": "83",
+                    "title": "Шапка-невидимка",
+                    "scene": "a beanie that makes the wearer shyly disappear into soft fog",
+                    "status": "done"
+                },
+                {
+                    "id": "84",
+                    "title": "Стол из чемоданов",
+                    "scene": "suitcases stacked into a dinner table set with fairy lights",
+                    "status": "done"
+                },
+                {
+                    "id": "85",
+                    "title": "Письмо в кармане",
+                    "scene": "finding an old kind note in a borrowed jacket pocket",
+                    "status": "done"
+                },
+                {
+                    "id": "86",
+                    "title": "Балкон-корабль",
+                    "scene": "the balcony railing becoming a ship bow sailing city lights",
+                    "status": "done"
+                },
+                {
+                    "id": "87",
+                    "title": "Чайник-паровоз",
+                    "scene": "kettle steam forming a tiny train circling the kitchen",
+                    "status": "done"
+                },
+                {
+                    "id": "88",
+                    "title": "Подушка-путешествие",
+                    "scene": "falling asleep on a pillow that dreams of distant soft cities",
+                    "status": "done"
+                },
+                {
+                    "id": "89",
+                    "title": "Смех в лифте",
+                    "scene": "elevator filled with laughter becoming floating soap bubbles",
+                    "status": "done"
+                },
+                {
+                    "id": "90",
+                    "title": "Фотоплёнка воспоминаний",
+                    "scene": "camera film unspooling into warm memory lanterns",
+                    "status": "done"
+                },
+                {
+                    "id": "91",
+                    "title": "Свидание с лапшой",
+                    "scene": "two bowls of noodles sharing one pair of chopsticks playfully",
+                    "status": "done"
+                },
+                {
+                    "id": "92",
+                    "title": "Ключница-зверинец",
+                    "scene": "key hooks shaped like animals holding jingling glowing keys",
+                    "status": "done"
+                },
+                {
+                    "id": "93",
+                    "title": "Утро после тусы",
+                    "scene": "sunrise over scattered shoes forming a soft spiral path home",
+                    "status": "done"
+                },
+                {
+                    "id": "94",
+                    "title": "Балконный сад",
+                    "scene": "herb pots blooming into a miniature hanging garden party",
+                    "status": "done"
+                },
+                {
+                    "id": "95",
+                    "title": "Последний трек",
+                    "scene": "the final song stretching time while everyone hugs softly",
+                    "status": "done"
+                },
+                {
+                    "id": "96",
+                    "title": "До завтра",
+                    "scene": "friends parting at the door while string lights spell see you tomorrow",
+                    "status": "done"
+                }
+            ]
+        }
+    ],
+    "backlog_note": "Сюжеты 17–96 для каждой пачки пишем после утверждения первых 16 и просмотра арта. Дальше — строго по одной колоде.",
+    "ink_yard_progress": {
+        "done": 96,
+        "total": 96,
+        "complete": true
+    },
+    "blue_dossier_progress": {
+        "done": 96,
+        "total": 96,
+        "complete": true
+    },
+    "balcony_tales_progress": {
+        "done": 96,
+        "total": 96,
+        "complete": true
+    }
+}

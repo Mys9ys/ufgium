@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UFGium — старт</title>
+<style>
+  :root {
+    --bg: #0e1624;
+    --bg2: #162033;
+    --ink: #e8eef8;
+    --muted: #9aa8bd;
+    --gold: #d4b36a;
+    --line: #2a3a52;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font: 16px/1.4 "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: radial-gradient(1200px 600px at 50% -10%, #1c3a5c 0%, var(--bg) 55%);
+  }
+  header { padding: 28px 16px 8px; text-align: center; }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: .14em; color: var(--gold); }
+  header p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+  .card {
+    max-width: 560px;
+    margin: 16px auto 40px;
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .fields { display: grid; grid-template-columns: 1fr 1.15fr; gap: 12px; }
+  label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  input {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: #101827;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .picker { position: relative; }
+  .picked {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+    font: inherit;
+    color: var(--ink);
+    background: #101827;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 6px 10px 6px 8px;
+    cursor: pointer;
+    min-height: 64px;
+  }
+  .picked b { display: block; font-size: 14px; font-weight: 650; }
+  .picked small { color: var(--muted); font-size: 11px; }
+  .chev { color: var(--muted); font-size: 12px; }
+  .menu {
+    position: absolute;
+    z-index: 3;
+    left: 0; right: 0;
+    top: calc(100% + 6px);
+    background: #101827;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 16px 32px rgba(0,0,0,.4);
+  }
+  .menu[hidden] { display: none; }
+  .opt {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+    font: inherit;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .opt.on, .opt:hover { background: #1c2c44; }
+  .opt b { display: block; font-size: 14px; }
+  .opt small { color: var(--muted); font-size: 11px; }
+  .fan {
+    position: relative;
+    height: 58px;
+    width: 118px;
+    flex: 0 0 auto;
+  }
+  .fan.mini { height: 46px; width: 86px; }
+  .fan img {
+    position: absolute;
+    bottom: 0;
+    width: 32px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,.35);
+    box-shadow: 0 3px 6px rgba(0,0,0,.45);
+    transform-origin: 50% 120%;
+  }
+  .fan.mini img { width: 24px; height: 34px; }
+  .fan img:nth-child(1) { left: 0; transform: rotate(-16deg); }
+  .fan img:nth-child(2) { left: 16px; transform: rotate(-8deg); }
+  .fan img:nth-child(3) { left: 32px; transform: rotate(0deg); z-index: 1; }
+  .fan img:nth-child(4) { left: 48px; transform: rotate(8deg); }
+  .fan img:nth-child(5) { left: 64px; transform: rotate(16deg); }
+  .fan.mini img:nth-child(1) { left: 0; }
+  .fan.mini img:nth-child(2) { left: 14px; }
+  .fan.mini img:nth-child(3) { left: 28px; }
+  button.go {
+    margin-top: 14px;
+    font: inherit; font-weight: 700;
+    background: var(--gold); color: #1a1408;
+    border: 0; border-radius: 10px;
+    padding: 10px 16px; cursor: pointer;
+  }
+  .join { margin-top: 16px; }
+  .join .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .join input { width: 150px; text-transform: uppercase; }
+  button.ghost {
+    font: inherit;
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px; cursor: pointer;
+  }
+  .muted { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+  @media (max-width: 560px) {
+    .fields { grid-template-columns: 1fr; }
+    .card { margin: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>UFGIUM</h1>
+  <p>Департамент странных синих дел · урок финансовой грамотности</p>
+</header>
+<main class="card">
+  <div class="fields">
+    <div>
+      <label>Имя</label>
+      <input placeholder="Как звать за столом">
+    </div>
+    <div class="picker">
+      <label>Колода</label>
+      <button type="button" class="picked" id="picked" aria-expanded="false">
+        <span><b id="picked-name">Чернильный Ярд</b><small id="picked-note">бумага и чернила</small></span>
+        <span class="fan mini" id="picked-fan"></span>
+        <span class="chev">▾</span>
+      </button>
+      <div class="menu" id="menu" hidden></div>
+    </div>
+  </div>
+  <button class="go" type="button">Создать катку</button>
+  <div class="join">
+    <label>Войти по коду</label>
+    <div class="row">
+      <input placeholder="КОД КОМНАТЫ" maxlength="6">
+      <button class="ghost" type="button">Войти</button>
+      <button class="ghost" type="button">Сканировать QR</button>
+    </div>
+    <p class="muted">За столом: хост создаёт катку → QR или код. Друзья сканируют или вводят код.</p>
+  </div>
+</main>
+<script>
+const PACKS = [
+  {
+    id: 'ink-yard',
+    name: 'Чернильный Ярд',
+    note: 'бумага и чернила',
+    cards: ['16','02','01','08','11']
+  },
+  {
+    id: 'blue-dossier',
+    name: 'Синее досье',
+    note: 'ночь и архив',
+    cards: ['01','02','04','11','16']
+  },
+  {
+    id: 'balcony-tales',
+    name: 'Балконные сказки',
+    note: 'закат и туса',
+    cards: ['04','01','02','03','09']
+  }
+];
+let current = PACKS[0];
+let open = true;
+
+function fan(pack, mini) {
+  const imgs = pack.cards.slice(0, mini ? 3 : 5).map((n) =>
+    `<img src="../../assets/packs/${pack.id}/${n}.jpg" alt="">`).join('');
+  return `<span class="fan${mini ? ' mini' : ''}">${imgs}</span>`;
+}
+
+function paint() {
+  document.getElementById('picked-name').textContent = current.name;
+  document.getElementById('picked-note').textContent = current.note;
+  document.getElementById('picked-fan').outerHTML = fan(current, true).replace('<span class="fan mini">', '<span class="fan mini" id="picked-fan">');
+  document.getElementById('menu').innerHTML = PACKS.map((p) => `
+    <button type="button" class="opt ${p.id === current.id ? 'on' : ''}" data-id="${p.id}">
+      <span><b>${p.name}</b><small>${p.note}</small></span>
+      ${fan(p, false)}
+    </button>`).join('');
+  document.getElementById('menu').hidden = !open;
+  document.getElementById('picked').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+document.getElementById('picked').onclick = () => { open = !open; paint(); };
+document.getElementById('menu').onclick = (e) => {
+  const btn = e.target.closest('.opt');
+  if (!btn) return;
+  current = PACKS.find((p) => p.id === btn.dataset.id);
+  open = false;
+  paint();
+};
+paint();
+</script>
+</body>
+</html>

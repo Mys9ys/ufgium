@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UFGium — три дизайна</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #1a1814;
+    color: #f3eadc;
+    font: 15px/1.35 "Segoe UI", system-ui, sans-serif;
+  }
+  .bar {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
+    background: rgba(26,24,20,.92);
+    border-bottom: 1px solid rgba(243,234,220,.12);
+    backdrop-filter: blur(8px);
+  }
+  .bar p { margin: 0; width: 100%; text-align: center; color: #b7aa98; font-size: 12px; }
+  .switch { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .switch button {
+    font: inherit;
+    border-radius: 999px;
+    border: 1px solid rgba(243,234,220,.2);
+    background: transparent;
+    color: inherit;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  .switch button.on { background: #e2c27a; color: #2a2114; border-color: transparent; font-weight: 650; }
+  .stage {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 22px 16px 40px;
+    flex-wrap: wrap;
+  }
+  .skin { width: 390px; }
+  .skin h2 { margin: 0 0 8px; text-align: center; font-size: 15px; letter-spacing: .04em; }
+  .skin .note { margin: 8px 8px 0; text-align: center; color: #b7aa98; font-size: 12px; min-height: 2.6em; }
+
+  .phone {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    min-height: 760px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 18px 40px rgba(0,0,0,.28);
+  }
+  .bank {
+    position: absolute; left: 12px; right: 12px; bottom: 64px; z-index: 3;
+    border-radius: 16px; padding: 14px 14px 12px;
+    background: #f7f1e6; color: #2a2418;
+    box-shadow: 0 14px 32px rgba(0,0,0,.35);
+  }
+  .bank[hidden] { display: none; }
+  .bank strong { display: block; margin-bottom: 6px; }
+  .bank p { margin: 4px 0; font-size: 14px; }
+  .bank button {
+    margin-top: 8px; font: inherit; font-weight: 650;
+    border: 0; border-radius: 999px; padding: 7px 12px;
+    background: #2a2418; color: #f7f1e6; cursor: pointer;
+  }
+  .top, .players, .dock, .tray-label { padding-left: 14px; padding-right: 14px; }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 14px;
+  }
+  .brand { font-weight: 750; letter-spacing: .14em; font-size: 13px; }
+  .round { font-size: 13px; opacity: .8; }
+  .timer { font-variant-numeric: tabular-nums; font-weight: 700; }
+  .players { display: flex; align-items: center; gap: 8px; min-height: 36px; padding-top: 8px; }
+  .players b { font-size: 12px; font-weight: 650; white-space: nowrap; }
+  .tokens { display: flex; }
+  .tok {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 750; line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-left: -6px;
+    border: 2px solid transparent;
+    flex: 0 0 auto;
+  }
+  .tok:first-child { margin-left: 0; }
+  .tok.w { background: #f4f1ea; color: #241c14; }
+  .tok.r { background: #c45c5c; color: #fff; }
+  .tok.more { background: #2a241c; color: #f3eadc; font-size: 10px; width: 28px; }
+  .situation { margin: 10px 14px 2px; }
+  .situation p {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin: 0;
+    padding: 8px 12px;
+    border-radius: 16px 16px 16px 5px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .situation p::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    bottom: -6px;
+    width: 12px;
+    height: 8px;
+    background: inherit;
+    clip-path: polygon(0 0, 100% 0, 8% 100%);
+  }
+  .table-scroll { max-height: 430px; overflow: auto; padding: 10px 8px 0 12px; scrollbar-width: thin; }
+  .felt { border-radius: 16px; padding: 10px; position: relative; }
+  .lights { display: flex; justify-content: space-between; padding: 0 6px 8px; }
+  .lights i {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ffe1a3;
+    box-shadow: 0 0 8px 2px rgba(255, 196, 110, .9);
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .art { position: relative; aspect-ratio: 3/4; }
+  .art img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 8px; }
+  .pile { position: absolute; left: 5px; bottom: 5px; width: 46px; height: 32px; }
+  .coin i {
+    position: absolute; left: 0; right: 0; top: 0; height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 32% 30%, #fff6d4 0%, #f0d078 36%, #c8922e 70%, #7a5014 100%);
+    box-shadow: 0 2px 0 #8a5c16, 0 3px 0 #6a4510, 0 3px 1px rgba(0,0,0,.4);
+  }
+  .pile .coin { position: absolute; left: 0; width: 22px; height: 12px; }
+  .pile .sum {
+    position: absolute; left: 24px; bottom: 1px;
+    min-width: 16px; height: 16px; padding: 0 4px;
+    border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #f6e2a2; color: #3a2a10;
+    font-size: 10px; font-weight: 750; line-height: 1;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 1px 2px rgba(0,0,0,.35);
+  }
+  .faces { position: absolute; right: 4px; bottom: 4px; display: flex; flex-direction: row-reverse; }
+  .av {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 750; line-height: 1;
+    font-variant-numeric: tabular-nums;
+    border: 2px solid rgba(20,14,8,.7);
+    margin-left: -6px;
+  }
+  .av:last-child { margin-left: 0; }
+  .av.w { background: #f4f1ea; color: #241c14; }
+  .av.r { background: #c45c5c; color: #fff; }
+  .av.more { background: #243044; color: #fff; }
+  .tray { margin-top: auto; padding: 0 12px 8px; }
+  .tray-label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; line-height: 1;
+    padding: 8px 10px 12px;
+  }
+  .mat {
+    border-radius: 14px;
+    padding: 8px;
+  }
+  .hand {
+    display: flex; gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  .hand .art { width: 74px; flex: 0 0 auto; }
+  .hand img { border-radius: 6px; }
+  .dock {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px;
+    padding: 8px 14px 14px;
+    font-size: 13px;
+  }
+  .dock button {
+    font: inherit; font-weight: 650;
+    border: 0; border-radius: 999px;
+    height: 40px; padding: 0 14px; cursor: pointer;
+  }
+  .me {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #f4f1ea; color: #241c14;
+    font-weight: 750; font-size: 15px; flex: 0 0 auto;
+  }
+  .goldpile {
+    position: relative; width: 34px; height: 40px; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .goldpile .coin { position: absolute; left: 3px; width: 28px; height: 14px; }
+  .theme {
+    position: relative;
+    width: 64px; height: 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(243,234,220,.28);
+    background: #2a2620;
+    padding: 0;
+    cursor: pointer;
+  }
+  .theme span {
+    position: absolute; top: 0; z-index: 1;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    color: #f3eadc;
+    pointer-events: none;
+  }
+  .theme .sun { left: 0; }
+  .theme .moon { right: 0; }
+  .theme svg { display: block; width: 15px; height: 15px; }
+  .theme .knob {
+    position: absolute; top: 3px; left: 3px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: #f0d7a2;
+    transform: translateX(32px);
+  }
+  .theme.light .knob { transform: translateX(0); }
+  .theme.light .sun { color: #2a2114; }
+  .theme:not(.light) .moon { color: #2a2114; }
+
+  /* 1. Ночной стол — светлее прежнего, огоньки */
+  .night { background: linear-gradient(#4a4036, #3a3128); color: #f6efe4; }
+  .night .brand { color: #f0d7a2; }
+  .night .tok { border-color: #3a3128; }
+  .night .tok.more { background: #6a5340; }
+  .night .felt {
+    background:
+      radial-gradient(80% 50% at 100% 0%, rgba(90,170,170,.18), transparent 42%),
+      linear-gradient(#6a5344, #4e3b2e);
+    box-shadow: inset 0 0 24px rgba(0,0,0,.18);
+  }
+  .night .mat { background: #8f9e9a; color: #17211f; }
+  .night .situation p { background: #f4ecdf; color: #2a2418; }
+  .night .tray-label { color: #17211f; }
+  .night .dock button { background: #f0d7a2; color: #2c2418; }
+
+  /* Светлая тема */
+  .cab { background: linear-gradient(#3d6284, #2c4d6b); color: #eef3f8; }
+  .cab .brand { color: #d7ecff; letter-spacing: .16em; }
+  .cab .tok { border-color: #2c4d6b; }
+  .cab .tok.more { background: #18324a; }
+  .cab .felt {
+    background:
+      radial-gradient(70% 45% at 0% 0%, rgba(120,210,200,.28), transparent 46%),
+      #3f6d90;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+  }
+  .cab .mat { background: #d5e3e6; color: #1a282c; }
+  .cab .situation p { background: #f7f1e6; color: #243044; }
+  .cab .tray-label { color: #1a282c; }
+  .cab .dock button { background: #e6d3b0; color: #2a2418; }
+
+  .skin { display: none; }
+  .skin.on { display: block; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <button type="button" class="theme" id="theme" aria-label="Тема">
+    <span class="sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg></span>
+    <span class="moon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 3a9 9 0 1 0 6 14A7 7 0 0 1 15 3z"/></svg></span>
+    <i class="knob"></i>
+  </button>
+  <div class="switch" id="counts">
+    <button type="button" data-n="6" class="on">6 за столом</button>
+    <button type="button" data-n="12">12</button>
+    <button type="button" data-n="24">24</button>
+  </div>
+  <p>Число на пачке — сколько монет. Внизу три монеты — сколько золотых на руках.</p>
+</div>
+<div class="stage" id="stage"></div>
+<script>
+const ink = (n) => `../../assets/packs/ink-yard/${n}.jpg`;
+const blue = (n) => `../../assets/packs/blue-dossier/${n}.jpg`;
+const bal = (n) => `../../assets/packs/balcony-tales/${n}.jpg`;
+const MIXED = [blue('01'), bal('04'), ink('16'), blue('02'), bal('01'), ink('02'), bal('03'), ink('08')];
+const MIXED_HAND = [ink('01'), bal('02'), blue('04'), ink('11'), bal('09'), blue('11'), ink('04'), bal('08'), blue('09')];
+const TABLE = { night: MIXED, cab: MIXED };
+const HAND = { night: MIXED_HAND, cab: MIXED_HAND };
+const COPY = {
+  night: {
+    line: 'Когда на тусе выходишь на балкон и не знаешь, куда деть руки.',
+    lamp: true
+  },
+  cab: {
+    line: 'Когда в досье нет твоей фамилии, но есть твоя подпись.',
+    lamp: false
+  }
+};
+let count = 6;
+let skin = 'night';
+
+function standCount() {
+  if (count >= 24) return 8;
+  if (count >= 12) return 6;
+  return 3;
+}
+
+function heap(n) {
+  const shown = n <= 2 ? n : (n >= 8 ? 4 : 3);
+  const coins = Array.from({ length: shown }, (_, i) =>
+    `<span class="coin" style="bottom:${i * 4}px"><i></i></span>`).join('');
+  const badge = n > shown ? `<b class="sum">${n}</b>` : '';
+  return `<div class="pile">${coins}${badge}</div>`;
+}
+
+function faces(who) {
+  const show = who.slice(0, 2);
+  const more = who.length - show.length;
+  const av = show.map((p) => `<span class="av ${p.s}">${p.n}</span>`).join('');
+  const badge = more > 0 ? `<span class="av more">+${more}</span>` : '';
+  return `<div class="faces">${av}${badge}</div>`;
+}
+
+function card(src, bet) {
+  const over = bet ? heap(bet.coins) + faces(bet.who) : '';
+  return `<div class="art"><img src="${src}" alt="">${over}</div>`;
+}
+
+function tokens() {
+  const all = [];
+  for (let i = 0; i < count; i++) {
+    const n = 14 + i;
+    all.push({ n, s: n % 2 === 0 ? 'w' : 'r' });
+  }
+  const show = all.slice(0, count > 8 ? 6 : count);
+  const more = count - show.length;
+  const html = show.map((p) => `<span class="tok ${p.s}">${p.n}</span>`).join('');
+  const badge = more > 0 ? `<span class="tok more">+${more}</span>` : '';
+  return `<b>${count} за столом</b><div class="tokens">${html}${badge}</div>`;
+}
+
+function phone(id) {
+  const c = COPY[id];
+  const bets = [
+    { coins: 7, who: [{ s: 'w', n: 16 }, { s: 'r', n: 15 }] },
+    { coins: 3, who: [{ s: 'r', n: 17 }] },
+    null,
+    { coins: 12, who: [{ s: 'w', n: 14 }, { s: 'w', n: 18 }, { s: 'r', n: 19 }] },
+    { coins: 2, who: [{ s: 'w', n: 20 }] },
+    null,
+    { coins: 5, who: [{ s: 'r', n: 21 }, { s: 'w', n: 22 }] },
+    { coins: 4, who: [{ s: 'r', n: 23 }] }
+  ];
+  const nStand = standCount();
+  const grid = TABLE[id].slice(0, nStand).map((file, i) => card(file, bets[i])).join('');
+  const lights = c.lamp ? '<div class="lights"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : '';
+  const hand = HAND[id].map((file) => card(file, null)).join('');
+  return `<section class="skin ${id === skin ? 'on' : ''}" data-skin="${id}">
+    <div class="phone ${id}">
+      <div class="top">
+        <div class="brand">UFGIUM</div>
+        <div class="round">Тур 3 · ставки</div>
+        <div class="timer">12:40</div>
+      </div>
+      <div class="players">${tokens()}</div>
+      <div class="situation"><p>${c.line}</p></div>
+      <div class="table-scroll"><div class="felt">${lights}<div class="grid">${grid}</div></div></div>
+      <section class="tray">
+        <div class="mat">
+          <div class="tray-label"><span>Мои карты</span><span>9</span></div>
+          <div class="hand">${hand}</div>
+        </div>
+      </section>
+      <div class="dock">
+        <span class="me">16</span>
+        <span class="goldpile" aria-label="3 золотых"><span class="coin" style="bottom:6px"><i></i></span><span class="coin" style="bottom:12px"><i></i></span><span class="coin" style="bottom:18px"><i></i></span></span>
+        <button type="button" class="open-bank">Банк</button>
+      </div>
+      <div class="bank" hidden>
+        <strong>Банк</strong>
+        <p>На руках 3 золотых</p>
+        <p>Вексель, можно занять до 3</p>
+        <p>Займ открывается со 2 тура</p>
+        <button type="button" class="close-bank">Закрыть</button>
+      </div>
+    </div>
+  </section>`;
+}
+
+function render() {
+  document.getElementById('stage').innerHTML = ['night','cab'].map(phone).join('');
+  document.getElementById('theme').classList.toggle('light', skin === 'cab');
+  document.querySelectorAll('#counts button').forEach((b) => b.classList.toggle('on', Number(b.dataset.n) === count));
+}
+
+document.getElementById('theme').onclick = () => {
+  skin = skin === 'night' ? 'cab' : 'night';
+  render();
+};
+document.getElementById('counts').onclick = (e) => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  count = Number(b.dataset.n);
+  render();
+};
+document.getElementById('stage').onclick = (e) => {
+  const phone = e.target.closest('.phone');
+  if (!phone) return;
+  const sheet = phone.querySelector('.bank');
+  if (e.target.closest('.open-bank')) sheet.hidden = false;
+  if (e.target.closest('.close-bank')) sheet.hidden = true;
+};
+render();
+</script>
+</body>
+</html>

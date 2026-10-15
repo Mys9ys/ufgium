@@ -1,0 +1,9 @@
+.osp/
+sql/_*.json
+sql/_*.php
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.*
+refs/

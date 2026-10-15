@@ -1,0 +1,143 @@
+{
+  "version": "0.5",
+  "meta": {
+    "one_add_per_round_from": 2,
+    "persistent": true,
+    "new_beats_old": true,
+    "no_rule_on_round_1": true,
+    "draw_at": "round_start"
+  },
+  "base": [
+    { "id": "base_marks", "from_round": 1 },
+    { "id": "base_blue_steklyshki", "from_round": 1 },
+    { "id": "base_start_pack", "from_round": 1 },
+    { "id": "base_situation", "from_round": 1 },
+    { "id": "base_alt_sides", "from_round": 1 },
+    { "id": "base_round_flow", "from_round": 1 },
+    { "id": "base_rounds_count", "from_round": 1 },
+    { "id": "base_lay_timer", "from_round": 1 },
+    { "id": "base_lay_all_who_can", "from_round": 1 },
+    { "id": "base_lay_pass", "from_round": 1 },
+    { "id": "base_shuffle_board", "from_round": 1 },
+    { "id": "base_bet_1", "from_round": 1 },
+    { "id": "base_no_self_bet", "from_round": 1 },
+    { "id": "base_layer_no_vote", "from_round": 1 },
+    { "id": "base_payout_owner", "from_round": 1 },
+    { "id": "base_points_top", "from_round": 1 },
+    { "id": "base_points_volume", "from_round": 1 },
+    { "id": "base_spending_rank", "from_round": 1 },
+    { "id": "base_grossbuch", "from_round": 1 },
+    { "id": "base_deals_open", "from_round": 1 },
+    { "id": "base_bet_timer", "from_round": 1 },
+    { "id": "base_bet_ready", "from_round": 1 },
+    { "id": "base_bet_pass", "from_round": 1 },
+    { "id": "base_loan_limit_3", "from_round": 1 },
+    { "id": "base_loan_from_r2", "from_round": 2 },
+    { "id": "base_loan_per_tour", "from_round": 2 },
+    { "id": "base_voucher_buy_per_tour", "from_round": 1 },
+    { "id": "base_voucher_bank_shop", "from_round": 1 },
+    { "id": "base_voucher_rub", "from_round": 1 },
+    { "id": "base_voucher_empty_only", "from_round": 1 },
+    { "id": "base_loan_not_spend", "from_round": 1 },
+    { "id": "base_buyer_spend_only", "from_round": 1 },
+    { "id": "base_no_gift", "from_round": 1 },
+    { "id": "base_no_p2p_debt_live", "from_round": 1 },
+    { "id": "base_no_mark_swap", "from_round": 1 },
+    { "id": "base_unlimited_supply", "from_round": 1 },
+    { "id": "base_reveal_settle", "from_round": 1 },
+    { "id": "base_owner_default_open", "from_round": 1 },
+    { "id": "base_early_end", "from_round": 1 },
+    { "id": "base_end_redeem", "from_round": "end" },
+    { "id": "base_debt_profile", "from_round": "end" },
+    { "id": "base_prizes", "from_round": "end" }
+  ],
+  "cards": [
+    {
+      "id": "rule_loan_limit_5",
+      "title": "Кредитное послабление",
+      "body": "Лимит займа по новым векселям — 5 золотых. Уже взятые не меняются.",
+      "flags": { "new_loan_limit": 5 },
+      "live_game": true
+    },
+    {
+      "id": "rule_bet_3_one",
+      "title": "Тяжёлая ставка",
+      "body": "Можно поставить до 3 монет на одну карту. Слито в правило дробления.",
+      "flags": { "bet_max_per_slot": 3 },
+      "subsumed_by": "rule_bet_split",
+      "live_game": true
+    },
+    {
+      "id": "rule_bet_split",
+      "title": "Дробный пыл",
+      "body": "Можно ставить на несколько карт: на каждую не больше 3, сумма за тур не больше 3. Например 1+2, 1+1+1 или 3 на одну.",
+      "flags": { "bet_split": true, "bet_max_per_slot": 3, "bet_total_cap": 3 },
+      "cancels": ["base_bet_1"],
+      "live_game": true
+    },
+    {
+      "id": "rule_bet_chase",
+      "title": "Догонка",
+      "body": "Пока тур не закончен, можно добавлять к ставке. Суммарно не больше 3.",
+      "flags": { "bet_chase": true },
+      "live_game": null
+    },
+    {
+      "id": "rule_layer_can_vote",
+      "title": "Голос выложивших",
+      "body": "Кто выложил карту, тоже может ставить, но не на свою.",
+      "flags": { "layer_can_vote": true },
+      "cancels": ["base_layer_no_vote"],
+      "live_game": null
+    },
+    {
+      "id": "rule_p2p_loan",
+      "title": "Дружеский кредит",
+      "body": "Можно дать взаймы другу одну монету — раз в тур.",
+      "flags": { "p2p_loan": true, "p2p_loan_max": 1, "p2p_loan_per_round": 1 },
+      "live_game": true
+    },
+    {
+      "id": "rule_teams_of_3",
+      "title": "Три мушкетёра",
+      "body": "Команда из трёх: капитан платит 2, участники по 1 — в банк. Появляется во 2-м или 3-м туре, не со старта.",
+      "flags": { "teams": true, "earliest_round": 2 },
+      "live_game": true
+    },
+    {
+      "id": "rule_card_market",
+      "title": "Чёрный рынок карт",
+      "body": "Продажа карт друг другу: одна карта, одна монета, один раз за тур.",
+      "flags": { "card_market": true, "card_trade_price": 1, "card_trade_per_round": 1 },
+      "live_game": true
+    },
+    {
+      "id": "rule_buy_cards_bank",
+      "title": "Докупка у банка",
+      "body": "Можно купить одну карту ассоциации из банка за тур.",
+      "flags": { "card_bank": true, "card_bank_per_round": 1, "card_bank_price": 1 },
+      "live_game": true
+    },
+    {
+      "id": "rule_deposit_5_6",
+      "title": "Вклад в банк",
+      "body": "Положи 5 монет в банк. В конце катки вклад вернётся как 6. Не по турам.",
+      "flags": { "deposit_in": 5, "deposit_out": 6, "deposit_at": "session_end" },
+      "live_game": true
+    },
+    {
+      "id": "rule_hide_owners",
+      "title": "Инкогнито стенда",
+      "body": "До итога тура не видно, чья карта. В конце — раскрытие.",
+      "flags": { "hide_owners": true },
+      "live_game": null
+    },
+    {
+      "id": "rule_alt_gender",
+      "title": "Другой фильтр",
+      "body": "Вместо красных и белых ходят, например, мальчики и девочки.",
+      "flags": { "alt_filter": "gender" },
+      "live_game": false
+    }
+  ]
+}
